@@ -1,0 +1,108 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
+  body {
+    font-family: 'Baloo 2', cursive;
+    background-color: #e6f2e6;
+    color: #2e4d2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  form {
+    background-color: #d9ead3;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 300px;
+    position: relative;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 2px solid #a3cfa3;
+    border-radius: 8px;
+    background-color: #f0f7f0;
+    font-family: 'Baloo 2', cursive;
+    color: #2e4d2e;
+    transition: 0.3s;
+  }
+
+  input:focus {
+    border-color: #4a7d4a;
+    box-shadow: 0 0 5px #4a7d4a;
+    transform: scale(1.02);
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    background-color: #4a7d4a;
+    color: #f0f7f0;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Baloo 2', cursive;
+  }
+
+  button:hover {
+    background-color: #3b623b;
+    transform: scale(1.05);
+  }
+
+  button:active {
+    transform: scale(0.97);
+  }
+
+  .successMsg {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #2e7d32;
+    opacity: 0;
+    transition: 0.5s;
+  }
+
+  .successMsg.show {
+    opacity: 1;
+  }
+</style>
+
+<form
+action="https://docs.google.com/forms/d/e/1FAIpQLSdmluX4AFfq1jGuzYrgVJQJ36evmVXCarWPmLIO30TXf_nvTQ/formResponse"
+method="POST" target="_blank" id="forestForm">
+  <label>你是誰:</label>
+  <input name="entry.1895701717" type="text"><br>
+  <label>你幾歲:</label>
+  <input name="entry.1582180296" type="text"><br>
+  <label>你的電話:</label>
+  <input name="entry.497820017" type="text"><br>
+  <button type="submit">送出</button>
+  <div class="successMsg" id="successMsg">感謝你的填寫！🌿</div>
+</form>
+
+<script>
+  const form = document.getElementById('forestForm');
+  const successMsg = document.getElementById('successMsg');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); // 阻止頁面跳轉
+    successMsg.classList.add('show'); // 顯示成功提示
+    setTimeout(() => successMsg.classList.remove('show'), 3000); // 3秒後消失
+    form.reset(); // 重置表單
+    // 如果真的要送到 Google Form, 可加下面這行：
+    // form.submit();
+  });
+</script>
