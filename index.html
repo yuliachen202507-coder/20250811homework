@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>陽春採購申請系統 - 互動示範</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <h1>陽春採購申請系統 - 互動示範</h1>
+</header>
+
+<nav>
+  <button class="tabBtn active" data-tab="page1">1. 請購單填寫</button>
+  <button class="tabBtn" data-tab="page2">2. 業務主管審核</button>
+  <button class="tabBtn" data-tab="page3">3. 採購接收請購單</button>
+  <button class="tabBtn" data-tab="page4">4. 採購單填寫</button>
+  <button class="tabBtn" data-tab="page5">5. 採購主管審核</button>
+  <button class="tabBtn" data-tab="page6">6. 採購下單</button>
+  <button class="tabBtn" data-tab="page7">7. 商品驗收</button>
+</nav>
+
+<main>
+
+<!-- 1. 請購單填寫 -->
+<section id="page1" class="active">
+  <form id="purchaseRequestForm">
+    <label>姓名：<input type="text" name="applicantName" required /></label><br /><br />
+    <label>請購項目：<input type="text" name="itemName" value="001筆記型電腦" required /></label><br /><br />
+    <label>數量：<input type="number" name="quantity" min="1" required /></label><br /><br />
+    <label>預算：<input type="number" name="budget" min="0" required /></label><br /><br />
+    <button type="submit">送出申請</button>
+  </form>
+  <p id="page1Message" class="message"></p>
+</section>
+
+<!-- 2. 業務主管審核 -->
+<section id="page2">
+  <table>
+    <thead>
+      <tr>
+        <th>請購單編號</th>
+        <th>申請人</th>
+        <th>狀態</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="purchaseRequestList">
+      <tr>
+        <td>001</td>
+        <td>王小明</td>
+        <td class="status">待審核</td>
+        <td><button class="approveBtn">同意簽核</button></td>
+      </tr>
+      <tr>
+        <td>002</td>
+        <td>李小華</td>
+        <td class="status">已同意</td>
+        <td><button disabled>查看詳細</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <p id="page2Message" class="message"></p>
+</section>
+
+<!-- 3. 採購接收請購單 -->
+<section id="page3">
+  <p><strong>請購單編號：</strong><span id="prId">001</span></p>
+  <p><strong>申請人：</strong><span id="prApplicant">王小明</span></p>
+  <p><strong>請購項目：</strong><span id="prItem">電腦螢幕</span></p>
+  <p><strong>數量：</strong><span id="prQuantity">5</span></p>
+  <p><strong>預算：</strong><span id="prBudget">30000</span></p>
+  <button id="receivePrBtn">接收請購單</button>
+  <p id="page3Message" class="message"></p>
+</section>
+
+<!-- 4. 採購單填寫 -->
+<section id="page4">
+  <form id="purchaseOrderForm">
+    <label>採購單編號：<input type="text" name="purchaseOrderId" placeholder="自動生成或手動輸入" /></label><br /><br />
+    <label>請購單編號：<strong>001</strong></label><br /><br />
+    <label>採購項目名稱：<input type="text" name="purchaseItemName" required /></label><br /><br />
+    <label>採購數量：<input type="number" name="purchaseQuantity" min="1" required /></label><br /><br />
+    <label>採購單金額：<input type="number" name="purchaseAmount" min="0" required /></label><br /><br />
+    <label>上傳報價單（支援pdf, jpg, png）：<input type="file" name="quotationFile" accept=".pdf,.jpg,.png" /></label><br /><br />
+    <button type="submit">送出申請</button>
+  </form>
+  <p id="page4Message" class="message"></p>
+</section>
+
+<!-- 5. 採購主管審核 -->
+<section id="page5">
+  <table>
+    <thead>
+      <tr>
+        <th>採購單編號</th>
+        <th>請購單編號</th>
+        <th>狀態</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="purchaseOrderList">
+      <tr>
+        <td>1001</td>
+        <td>001</td>
+        <td class="status">待審核</td>
+        <td><button class="approveBtn">同意簽核</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <p id="page5Message" class="message"></p>
+</section>
+
+<!-- 6. 採購下單 -->
+<section id="page6">
+  <p><strong>採購單編號：</strong>1001</p>
+  <p><strong>請購單編號：</strong>001</p>
+  <p><strong>採購狀態：</strong><span id="orderStatus">待下單</span></p>
+  <button id="procureBtn">已進行採購</button>
+  <p id="page6Message" class="message"></p>
+</section>
+
+<!-- 7. 商品驗收 -->
+<section id="page7">
+  <p><strong>採購單編號：</strong>1001</p>
+  <p><strong>請購單編號：</strong>001</p>
+  <p><strong>商品狀態：</strong><span id="goodsStatus">待驗收</span></p>
+  <button id="goodsArrivedBtn">商品到貨</button>
+  <button id="goodsCheckedBtn">商品已驗收通過</button>
+  <p id="page7Message" class="message"></p>
+</section>
+
+</main>
+
+<footer>
+  <p>© 2025 陽春採購申請系統</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
